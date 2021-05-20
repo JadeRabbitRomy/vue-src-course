@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../../node_modules/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <!-- 写模板 -->
+    <div id="root">
+      <p>{{name}}</p>
+      <p>{{message}}</p>
+    </div>
+
+    <script>
+      //第二步 创建实例
+      console.log(root);
+
+      let app = new Vue({
+        el: "#root",
+        data: {
+          name: "张三",
+          message: "是一个人",
+        },
+      });
+
+      //第三步 挂载 vue.js帮我们实现了
+
+      //实现:Vue 获得模板有坑，然后利用构造函数中所提供的数据填坑
+
+      //Vue 利用数据和页面中的模板生成了新的HTML标签（node元素）
+
+      //仿造Vue实现参考03
+
+      console.log(root);
+    </script>
+  </body>
+</html>
