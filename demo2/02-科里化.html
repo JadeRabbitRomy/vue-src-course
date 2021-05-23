@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let tags = "div,p,a,img,ul,li".split(",");
+
+      function makeMap(keys) {
+        let set = {};
+        keys.forEach((key) => (set[key] = true));
+        return function (tagName) {
+          return !!set[tagName.toLowerCase()]; //双感叹号转换为布尔值
+        };
+      }
+
+      let isHTMLTag = makeMap(tags);
+
+      //虚拟DOM的render方法
+      //Vue项目模板转换为抽象语法树需要执行几次？
+      //页面一开始加载需要渲染，每一个属性（响应式）数据在发生变化时 需要渲染。watch computed 等等
+
+      //day01的写法，只要数据发变化，就会重新渲染，模板就会被解析一次。
+      //我们的代码里简化了，解析的是虚拟DOM，没有用抽象语法树，Vue里用的是解析字符串抽象语法树，解析字符串对性能消耗非常大。
+      //抽象语法树是模板生成的，模板变了抽象语法树就会变
+      //render的作用是将虚拟DOM转换为真正的DOM加到页面中
+      //我们的优化方式是：虚拟DOM可以降级理解为抽象语法树
+      //一个项目运行的时候模板是不会变的，也就表示抽象语法树是不会变的。
+      //我们可以将代码进行优化，将虚拟DOM缓存起来，生成一个函数传入数据，就可以得到真正的DOM
+      //
+    </script>
+  </body>
+</html>

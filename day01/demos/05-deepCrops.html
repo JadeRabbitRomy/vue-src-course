@@ -27,7 +27,6 @@
           txt = txt.replace(rkuohao, function (_, g) {
             //使用正则匹配一次函数就会调用一次，函数的第0个参数表示匹配到的内容，函数中的第n个参数表示正则中的第n组（一个括号表示一组）
 
-            debugger;
             let key = g.trim(); //只取写在花括号里面的东西
             let value = data[key];
 
@@ -86,5 +85,23 @@
         },
       },
     });
+
+    //要解决的问题: 使用'xxxx.yyy.zzz'可以访问到某个对象的值
+    //需要用字符串路径来访问对象的成员
+    function getValueByPath(obj, path) {
+      let paths = path.split("."); //[xxx,yyy,zzz]
+      //先取得obj.xxx，在取得 结果中的 yyy 再取得结果中的 zzz
+      // let res = null;
+      // res = obj[ paths[0] ];
+      // res=res[ path[1]];
+      // res=res[path[2]];
+
+      let res = obj;
+      let prop;
+      while ((prop = paths.shift)) {
+        res = res[prop];
+      }
+      return res;
+    }
   </script>
 </html>
