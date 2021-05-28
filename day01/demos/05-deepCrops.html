@@ -98,7 +98,7 @@
 
       let res = obj;
       let prop;
-      while ((prop = paths.shift)) {
+      while ((prop = paths.shift())) {
         res = res[prop];
       }
       return res;
